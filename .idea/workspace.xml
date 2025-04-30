@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="166b00e9-d300-40cc-86b0-aeb42deb32c4" name="Changes" comment="Add client, agent, and keeper authentication features&#10;&#10;This commit introduces models, routes, and controllers for client, agent, and keeper authentication, including sign-up, sign-in, and sign-out functionalities. It also removes unused `.idea` project files and static `index.html`, replacing them with dynamically served pages via Express.">
+      <change afterPath="$PROJECT_DIR$/.env.development.local" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env.production.local" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/agent-auth/agent.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/client-auth/client.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/keeper-auth/keeper.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/mysql.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/agent.model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/client.model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/keeper.model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/admin-login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/admin-register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/agent.routes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/client.routes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/keeper.routes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/page.routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/clearance_system.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;sparechange679&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/sparechange679/clearance_system.git&quot;,
+    &quot;accountId&quot;: &quot;f0b44ae9-57a2-4ca9-bd42-6c30dd7455c9&quot;
+  }
+}</component>
+  <component name="PhpDebugGeneral" listening_started="true" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/bin/php" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2wQRJe9wQNnbHI13ZrNCCISPSrs" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "main",
+    "javascript.nodejs.core.library.configured.version": "22.14.0",
+    "javascript.nodejs.core.library.typings.version": "22.14.1",
+    "last_opened_file_path": "/home/blessings/Documents/sites/clearance_system/public",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/snap/webstorm/459/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/routes" />
+      <recent name="$PROJECT_DIR$/models" />
+      <recent name="$PROJECT_DIR$/controllers/client-auth" />
+      <recent name="$PROJECT_DIR$/controllers/admin-auth" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/controllers/agent-auth" />
+      <recent name="$PROJECT_DIR$/controllers/keeper-auth" />
+      <recent name="$PROJECT_DIR$/controllers/client-auth" />
+      <recent name="$PROJECT_DIR$/controllers/admin-auth" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-WS-251.23774.424" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="166b00e9-d300-40cc-86b0-aeb42deb32c4" name="Changes" comment="" />
+      <created>1745971741661</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1745971741661</updated>
+      <workItem from="1745971744644" duration="7841000" />
+      <workItem from="1746011739546" duration="2794000" />
+      <workItem from="1746017834337" duration="18649000" />
+      <workItem from="1746042396141" duration="1576000" />
+      <workItem from="1746044035229" duration="7264000" />
+    </task>
+    <task id="LOCAL-00001" summary="refactor autoloading and reorganize core files  - Implemented a spl_autoload_register function for dynamic class loading - Renamed and relocated Database.php, Response.php, and Validator.php to improve structure - Updated index.php to utilize the new autoloading mechanism">
+      <option name="closed" value="true" />
+      <created>1746036427387</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1746036427387</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="implement admin registration and login views, and authentication controllers&#10;&#10;- Add admin registration view (`admin_register.view.php`)&#10;- Add admin login view (`admin_login.view.php`)&#10;- Implement authentication controllers for admin and client logins&#10;- Update index view for improved navigation" />
+    <MESSAGE value="refactor autoloading and reorganize core files  - Implemented a spl_autoload_register function for dynamic class loading - Renamed and relocated Database.php, Response.php, and Validator.php to improve structure - Updated index.php to utilize the new autoloading mechanism" />
+    <MESSAGE value="Add client, agent, and keeper authentication features&#10;&#10;This commit introduces models, routes, and controllers for client, agent, and keeper authentication, including sign-up, sign-in, and sign-out functionalities. It also removes unused `.idea` project files and static `index.html`, replacing them with dynamically served pages via Express." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add client, agent, and keeper authentication features&#10;&#10;This commit introduces models, routes, and controllers for client, agent, and keeper authentication, including sign-up, sign-in, and sign-out functionalities. It also removes unused `.idea` project files and static `index.html`, replacing them with dynamically served pages via Express." />
+  </component>
+</project>
