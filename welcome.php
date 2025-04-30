@@ -58,10 +58,10 @@
                 <i class="fas fa-building-columns me-2"></i>MRA Clearance System
             </a>
             <div class="nav-btns ms-auto">
-                <a href="admin_login.php" class="btn btn-light btn-outline-primary me-2">Admin</a>
-                <a href="agent_login.php" class="btn btn-light btn-outline-success me-2">Agent</a>
-                <a href="keeper_login.php" class="btn btn-light btn-outline-warning me-2">Keeper</a>
-                <a href="client_login.php" class="btn btn-light btn-outline-info">Client</a>
+                <a href="controllers/auth/admin_login.php" class="btn btn-light btn-outline-primary me-2">Admin</a>
+                <a href="controllers/auth/agent_login.php" class="btn btn-light btn-outline-success me-2">Agent</a>
+                <a href="controllers/auth/keeper_login.php" class="btn btn-light btn-outline-warning me-2">Keeper</a>
+                <a href="controllers/auth/client_login.php" class="btn btn-light btn-outline-info">Client</a>
             </div>
         </div>
     </nav>
@@ -74,10 +74,10 @@
             <span class="text-muted">Admin, Agent, Keeper, or Client</span>
         </p>
         <div class="nav-btns">
-            <a href="admin_login.php" class="btn btn-primary btn-lg"><i class="fas fa-user-shield me-2"></i>Admin</a>
-            <a href="agent_login.php" class="btn btn-success btn-lg"><i class="fas fa-user-tie me-2"></i>Agent</a>
-            <a href="keeper_login.php" class="btn btn-warning btn-lg text-white"><i class="fas fa-user-shield me-2"></i>Keeper</a>
-            <a href="client_login.php" class="btn btn-info btn-lg text-white"><i class="fas fa-user me-2"></i>Client</a>
+            <a href="controllers/auth/admin_login.php" class="btn btn-primary btn-lg"><i class="fas fa-user-shield me-2"></i>Admin</a>
+            <a href="controllers/auth/agent_login.php" class="btn btn-success btn-lg"><i class="fas fa-user-tie me-2"></i>Agent</a>
+            <a href="controllers/auth/keeper_login.php" class="btn btn-warning btn-lg text-white"><i class="fas fa-user-shield me-2"></i>Keeper</a>
+            <a href="controllers/auth/client_login.php" class="btn btn-info btn-lg text-white"><i class="fas fa-user me-2"></i>Client</a>
         </div>
     </section>
 
