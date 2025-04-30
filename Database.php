@@ -12,12 +12,33 @@ class Database
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         ]);
     }
+
+    public function get()
+    {
+        return $this->statement->fetchAll();
+    }
     public function query($query, $params = [])
     {
-        $stmt = $this->connection->prepare($query);
+        $this->statement = $this->connection->prepare($query);
 
-        $stmt->execute($params);
+        $this->statement->execute($params);
 
-        return $stmt;
+        return $this;
+    }
+
+    public function find()
+    {
+        return $this->statement;
+    }
+
+    public function findOrFail()
+    {
+        $result = $this->find();
+
+        if (! $result) {
+            abort();
+        }
+
+        return $result;
     }
 }

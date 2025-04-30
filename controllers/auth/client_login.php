@@ -1,3 +1,3 @@
 <?php
 
-require 'views/client_login.view.php';
+view('client_login.view.php');

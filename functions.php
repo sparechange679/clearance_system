@@ -13,3 +13,23 @@ function dd($value)
 
     die();
 }
+
+function authorize($condition, $status = Response::FORBIDDEN)
+{
+    if (!$condition) {
+        abort($status);
+    }
+}
+
+function base_path($path)
+{
+    global $BASE_PATH;
+
+    return $BASE_PATH . $path;
+}
+
+function view($path, $attributes = [])
+{
+    extract($attributes);
+    require base_path("views/" . $path);
+}

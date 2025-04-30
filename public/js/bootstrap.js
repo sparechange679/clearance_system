@@ -1,4 +1,4 @@
-import * as bootstrap from 'bootstrap'
+import * as bootstrap from 'public/js/bootstrap'
 
 // Extend Tooltip to add color options
 bootstrap.Tooltip.prototype.show = (original => {

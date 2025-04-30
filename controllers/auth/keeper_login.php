@@ -1,3 +1,3 @@
 <?php
 
-require 'views/keeper_login.view.php';
+view('keeper_login.view.php');

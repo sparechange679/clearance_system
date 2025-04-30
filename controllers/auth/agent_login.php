@@ -1,3 +1,3 @@
 <?php
 
-require 'views/agent_login.view.php';
+view('agent_login.view.php');

@@ -1,3 +1,3 @@
 <?php
 
-require 'views/admin_register.view.php';
+view('admin_register.view.php');

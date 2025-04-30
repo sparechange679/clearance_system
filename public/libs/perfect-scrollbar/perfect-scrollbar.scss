@@ -1,5 +1,5 @@
-@use '../../scss/_bootstrap-extended/include' as light;
-@import '../../scss/_custom-variables/libs';
+@use '../../../scss/_bootstrap-extended/include' as light;
+@import '../../../scss/_custom-variables/libs';
 @import '../../node_modules/perfect-scrollbar/css/perfect-scrollbar';
 
 $ps-width: 0.25rem !default;
