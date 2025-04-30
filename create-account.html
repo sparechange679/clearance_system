@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Admin Account</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .auth-container { max-width: 450px; margin: 1rem auto; padding: 1.25rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-radius: 8px; background: #2c5530; border: 2px solid #1e3b21; color: white; }
+        .logo-container { text-align: center; margin-bottom: 1rem; border-bottom: 2px solid #1e3b21; padding-bottom: 1rem; }
+        body { background-color: white !important; min-height: 100vh; display: flex; align-items: center; }
+        .btn-primary { background-color: #2c5530 !important; border-color: #2c5530 !important; }
+        .btn-primary:hover { background-color: #1e3b21 !important; border-color: #1e3b21 !important; }
+        .form-control, .form-select { background-color: rgba(255,255,255,0.9); border-color: #1e3b21; }
+        .form-control:focus, .form-select:focus { background-color: white; border-color: #1e3b21; box-shadow: 0 0 0 0.25rem rgba(30,59,33,0.25); }
+        h2 { font-size: 1.5rem; margin-top: 0.5rem !important; color: white; }
+        .form-label { color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="auth-container">
+            <div class="logo-container">
+                <img src="https://www.mra.mw/assets/fe/images/logo.png" alt="Malawi Revenue Authority" style="max-width: 200px; height: auto;">
+                <h2 class="mt-3">Clearance Management System</h2>
+            </div>
+            <h4 class="mb-4 text-center">Create Administrator Account</h4>
+            <form action="create_account.php" method="POST">
+                <div class="mb-3">
+                    <label class="form-label">First Name</label>
+                    <input type="text" name="firstname" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Surname</label>
+                    <input type="text" name="surname" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input type="text" name="username" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" name="confirm_password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Create Account</button>
+            </form>
+            <div class="mt-3 text-center">
+                <a href="login.html" style="color: #ffd700;">Back to Login</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

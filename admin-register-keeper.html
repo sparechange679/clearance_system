@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Add Bootstrap Animations CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bs-primary: #02301a;
+            --bs-primary-rgb: 2, 48, 26;
+            --bs-success: #02301a;
+            --bs-success-rgb: 2, 48, 26;
+            --bs-warning: #ffd700;
+            --bs-warning-rgb: 255, 215, 0;
+        }
+
+        .sidebar {
+            background-color: var(--bs-primary);
+            min-height: 100vh;
+        }
+
+        .btn-primary {
+            --bs-btn-bg: var(--bs-primary);
+            --bs-btn-border-color: var(--bs-primary);
+            --bs-btn-hover-bg: #034527;
+            --bs-btn-hover-border-color: #034527;
+            --bs-btn-active-bg: #034527;
+            --bs-btn-active-border-color: #034527;
+        }
+
+        .btn-success {
+            --bs-btn-bg: var(--bs-success);
+            --bs-btn-border-color: var(--bs-success);
+            --bs-btn-hover-bg: #034527;
+            --bs-btn-hover-border-color: #034527;
+            --bs-btn-active-bg: #034527;
+            --bs-btn-active-border-color: #034527;
+        }
+
+        .badge.bg-warning {
+            color: #000;
+        }
+
+        .sidebar .nav-link {
+            color: #fff;
+            padding: 12px 16px;  /* Increased padding to move links down */
+            margin: 4px 0;       /* Added margin between links */
+        }
+        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+            background-color: #2c5282;  /* Changed to a deeper, navy blue */
+        }
+        /* Add hover effect using Bootstrap's shadow utilities */
+        .card {
+            transition: transform 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Updated styles for step indicators with white completed state */
+        .step-indicator {
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid #0d6efd;
+            color: #0d6efd;
+            background-color: white;
+        }
+        
+        .step-indicator:hover {
+            background-color: #e7f1ff;
+        }
+        
+        .step-indicator.active {
+            background-color: #0d6efd;
+            color: white;
+        }
+        
+        .step-indicator.completed {
+            background-color: white;
+            color: #0d6efd;
+            border: 1px solid #0d6efd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Update Sidebar with Bootstrap fixed classes -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar collapse position-fixed">
+                <div class="position-sticky pt-3 d-flex flex-column min-vh-100">
+                    <!-- Add MRA Logo -->
+                    <div class="text-center mb-3" style="border-bottom: 2px solid white;">
+                        <img src="https://www.mra.mw/assets/fe/images/logo.png" alt="Malawi Revenue Authority" style="max-width: 80%; height: auto; filter: brightness(0) invert(1);">
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin-dashboard.html">
+                                <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin-staff-management.html">
+                                <i class="fas fa-users me-2"></i>Staff Management
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin-register-agent.html">
+                                <i class="fas fa-user-plus me-2"></i>Register Agent
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="admin-register-keeper.html">
+                                <i class="fas fa-user-shield me-2"></i>Register Keeper
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin-reports.html">
+                                <i class="fas fa-chart-bar me-2"></i>Analytics Reports
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin-update-system.html">
+                                <i class="fas fa-cogs me-2"></i>Update System
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <!-- Add Footer -->
+                    <div class="mt-auto text-center text-white p-3" style="border-top: 1px solid rgba(255,255,255,0.2);">
+                        <small>&copy; 2024 MRA</small><br>
+                        <small>Clearance System v1.0</small>
+                    </div>
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom position-fixed bg-white" style="top: 0; right: 0; left: 16.66667%; z-index: 1000;">
+                    <h1 class="h2 ms-4">Register New Keeper</h1>
+                </div>
+
+                <div style="padding-top: 80px;">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="card shadow animate__animated animate__fadeInUp" style="max-width: 800px; margin: 0 auto;">
+                                <div class="card-header bg-primary text-white">
+                                    <h4 class="mb-0">Keeper Registration Form</h4>
+                                </div>
+                                <div class="card-body" style="max-height: 80vh; overflow-y: auto;">
+                                    <!-- Progress Bar -->
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
+                                    </div>
+                                    
+                                    <!-- Step Indicators -->
+                                    <div class="d-flex justify-content-between mb-4">
+                                        <span class="step-indicator active" data-step="1">Personal Info</span>
+                                        <span class="step-indicator" data-step="2">Contact Details</span>
+                                        <span class="step-indicator" data-step="3">Security Details</span>
+                                        <span class="step-indicator" data-step="4">Documents</span>
+                                    </div>
+
+                                    <form class="needs-validation" novalidate id="keeperForm">
+                                        <!-- Step 1: Personal Information -->
+                                        <div class="form-step" data-step="1">
+                                            <div class="row g-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">First Name</label>
+                                                    <input type="text" class="form-control" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Last Name</label>
+                                                    <input type="text" class="form-control" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Date of Birth</label>
+                                                    <input type="date" class="form-control" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">National ID</label>
+                                                    <input type="text" class="form-control" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Step 2: Contact Information -->
+                                        <div class="form-step d-none" data-step="2">
+                                            <div class="row g-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Email</label>
+                                                    <input type="email" class="form-control" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Phone Number</label>
+                                                    <input type="tel" class="form-control" required>
+                                                </div>
+                                                <div class="col-12">
+                                                    <label class="form-label">Address</label>
+                                                    <input type="text" class="form-control" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Step 3: Security Information -->
+                                        <div class="form-step d-none" data-step="3">
+                                            <div class="row g-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Security Clearance Level</label>
+                                                    <select class="form-select" required>
+                                                        <option value="">Select Level</option>
+                                                        <option value="1">Level 1</option>
+                                                        <option value="2">Level 2</option>
+                                                        <option value="3">Level 3</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Facility Assignment</label>
+                                                    <select class="form-select" required>
+                                                        <option value="">Select Facility</option>
+                                                        <option value="facility1">Facility A</option>
+                                                        <option value="facility2">Facility B</option>
+                                                        <option value="facility3">Facility C</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Password</label>
+                                                    <input type="password" class="form-control" id="password" required>
+                                                    <div class="progress mt-2" style="height: 5px;">
+                                                        <div class="progress-bar bg-danger" role="progressbar" id="passwordStrength"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Confirm Password</label>
+                                                    <input type="password" class="form-control" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Step 4: Documents -->
+                                        <div class="form-step d-none" data-step="4">
+                                            <div class="row g-3">
+                                                <div class="col-12">
+                                                    <label class="form-label">Upload Documents</label>
+                                                    <input type="file" class="form-control" multiple>
+                                                    <small class="text-muted">Please upload all required documents (ID, certifications, etc.)</small>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Navigation Buttons -->
+                                        <div class="d-flex justify-content-between mt-4">
+                                            <button type="button" class="btn btn-secondary" id="prevBtn" onclick="navigateStep(-1)" style="display: none;">Previous</button>
+                                            <button type="button" class="btn btn-primary" id="nextBtn" onclick="navigateStep(1)">Next</button>
+                                            <button type="button" class="btn btn-success" id="submitBtn" data-bs-toggle="modal" data-bs-target="#confirmModal" style="display: none;">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Cards and Tables Section -->
+                <div class="row mt-5">
+                    <!-- Statistics Cards -->
+                    <div class="col-md-12 mb-4">
+                        <h4 class="mb-3">Keeper Statistics</h4>
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card border-2 border-start border-primary shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                    Total Keepers</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">35</div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-user-shield fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card border-2 border-start border-success shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                    Active Keepers</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">28</div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-check-circle fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card border-2 border-start border-info shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                    Facilities Covered</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">15</div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-building fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card border-2 border-start border-warning shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                    Pending Approvals</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-clock fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Registrations Table -->
+                    <div class="col-md-12 mb-4">
+                        <div class="card shadow">
+                            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                                <h6 class="m-0 font-weight-bold">Recent Keeper Registrations</h6>
+                                <button class="btn btn-light btn-sm">View All</button>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Facility</th>
+                                                <th>Status</th>
+                                                <th>Registration Date</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>#KP001</td>
+                                                <td>Chimwemwe Banda</td>
+                                                <td>Facility A</td>
+                                                <td><span class="badge bg-success">Active</span></td>
+                                                <td>2024-03-15</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-info"><i class="fas fa-eye"></i></button>
+                                                    <button class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#KP002</td>
+                                                <td>Takondwa Phiri</td>
+                                                <td>Facility B</td>
+                                                <td><span class="badge bg-warning">Pending</span></td>
+                                                <td>2024-03-14</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-info"><i class="fas fa-eye"></i></button>
+                                                    <button class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#KP003</td>
+                                                <td>Mphatso Gondwe</td>
+                                                <td>Facility C</td>
+                                                <td><span class="badge bg-danger">Inactive</span></td>
+                                                <td>2024-03-13</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-info"><i class="fas fa-eye"></i></button>
+                                                    <button class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Facility Assignment Table -->
+                    <div class="col-md-12 mb-4">
+                        <div class="card shadow">
+                            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                                <h6 class="m-0 font-weight-bold">Facility Assignments Overview</h6>
+                                <button class="btn btn-light btn-sm">View Details</button>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Facility</th>
+                                                <th>Total Keepers</th>
+                                                <th>Active Keepers</th>
+                                                <th>Security Level</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Facility A</td>
+                                                <td>12</td>
+                                                <td>10</td>
+                                                <td>Level 3</td>
+                                                <td><span class="badge bg-success">Fully Staffed</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Facility B</td>
+                                                <td>8</td>
+                                                <td>6</td>
+                                                <td>Level 2</td>
+                                                <td><span class="badge bg-warning">Needs Staff</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Facility C</td>
+                                                <td>15</td>
+                                                <td>12</td>
+                                                <td>Level 3</td>
+                                                <td><span class="badge bg-info">Optimal</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Add Confirmation Modal -->
+    <div class="modal fade" id="confirmModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm Registration</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to register this keeper?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="document.getElementById('keeperForm').submit()">
+                        Confirm Registration
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Initialize tooltips
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+
+        // Form progress tracking
+        const form = document.querySelector('form');
+        const progressBar = document.querySelector('.progress-bar');
+        const inputs = form.querySelectorAll('input, select');
+        
+        inputs.forEach(input => {
+            input.addEventListener('change', updateProgress);
+        });
+
+        function updateProgress() {
+            const totalFields = inputs.length;
+            const filledFields = Array.from(inputs).filter(input => input.value.trim() !== '').length;
+            const progress = (filledFields / totalFields) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Password strength meter
+        const passwordInput = document.getElementById('password');
+        const strengthBar = document.getElementById('passwordStrength');
+        
+        passwordInput.addEventListener('input', function() {
+            const strength = calculatePasswordStrength(this.value);
+            strengthBar.style.width = `${strength}%`;
+            
+            if (strength < 33) {
+                strengthBar.className = 'progress-bar bg-danger';
+            } else if (strength < 66) {
+                strengthBar.className = 'progress-bar bg-warning';
+            } else {
+                strengthBar.className = 'progress-bar bg-success';
+            }
+        });
+
+        function calculatePasswordStrength(password) {
+            let strength = 0;
+            if (password.length >= 8) strength += 25;
+            if (password.match(/[A-Z]/)) strength += 25;
+            if (password.match(/[0-9]/)) strength += 25;
+            if (password.match(/[^A-Za-z0-9]/)) strength += 25;
+            return strength;
+        }
+
+        let currentStep = 1;
+        const totalSteps = 4;
+
+        function navigateStep(direction) {
+            const newStep = currentStep + direction;
+            if (newStep > 0 && newStep <= totalSteps) {
+                // Hide current step
+                document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.add('d-none');
+                // Show new step
+                document.querySelector(`.form-step[data-step="${newStep}"]`).classList.remove('d-none');
+                
+                // Update indicators - remove active class from current step
+                document.querySelector(`.step-indicator[data-step="${currentStep}"]`).classList.remove('active');
+                
+                // If moving forward, mark current step as completed
+                if (direction > 0) {
+                    document.querySelector(`.step-indicator[data-step="${currentStep}"]`).classList.add('completed');
+                }
+                
+                // Add active class to new step
+                document.querySelector(`.step-indicator[data-step="${newStep}"]`).classList.add('active');
+                document.querySelector(`.step-indicator[data-step="${newStep}"]`).classList.remove('completed');
+                
+                currentStep = newStep;
+                
+                // Always show Previous button except on first step, regardless of progress
+                document.getElementById('prevBtn').style.display = currentStep === 1 ? 'none' : 'block';
+                document.getElementById('nextBtn').style.display = currentStep === totalSteps ? 'none' : 'block';
+                document.getElementById('submitBtn').style.display = currentStep === totalSteps ? 'block' : 'none';
+                
+                // Update progress bar based on current step, not form completion
+                const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+                progressBar.style.width = `${progress}%`;
+            }
+        }
+
+        // Add click handlers for step indicators
+        document.querySelectorAll('.step-indicator').forEach(indicator => {
+            indicator.addEventListener('click', () => {
+                const clickedStep = parseInt(indicator.dataset.step);
+                const direction = clickedStep - currentStep;
+                navigateStep(direction);
+            });
+        });
+    </script>
+</body>
+</html>

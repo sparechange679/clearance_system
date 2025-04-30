@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Add Bootstrap Animations CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            background-color: #02301a;
+            min-height: 100vh;
+        }
+        .sidebar .nav-link {
+            color: #fff;
+            padding: 12px 16px;  /* Increased padding to move links down */
+            margin: 4px 0;       /* Added margin between links */
+        }
+        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+            background-color: #2c5282;  /* Changed to a deeper, navy blue */
+        }
+        /* Add hover effect using Bootstrap's shadow utilities */
+        .card {
+            transition: transform 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        /* Custom colors */
+        :root {
+            --bs-primary: #02301a;
+            --bs-secondary: #034c2a; /* Changed from yellow to darker green */
+        }
+        
+        .btn-custom-primary {
+            background-color: var(--bs-primary);
+            color: white;
+        }
+        
+        .btn-custom-primary:hover {
+            background-color: var(--bs-secondary);
+            color: white;
+        }
+        
+        .btn-custom-secondary {
+            background-color: var(--bs-primary);
+            color: white;
+        }
+        
+        .btn-custom-secondary:hover {
+            background-color: var(--bs-secondary);
+            color: white;
+        }
+        
+        /* Step indicators */
+        .bs-stepper-header {
+            background-color: #f8f9fa;
+            border-radius: 1rem;
+            padding: 1rem;
+        }
+        
+        .step-circle {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .active .step-circle {
+            background-color: var(--bs-primary);
+            color: white;
+        }
+        
+        .completed .step-circle {
+            background-color: var(--bs-primary); /* Changed from yellow to primary green */
+            color: white; /* Changed to white for better contrast */
+        }
+        
+        /* Add these styles to maintain consistent form size */
+        .step-content {
+            min-height: 200px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-floating {
+            margin-bottom: 0.5rem;
+        }
+        
+        .card {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Animate step transitions */
+        .step-content.active {
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        /* Adjust spacing for consistent layout */
+        .bs-stepper-header {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+        }
+        
+        .row.g-3 {
+            --bs-gutter-y: 0.3rem;
+        }
+        
+        /* Reduce heading margins */
+        h5.mb-3 {
+            margin-bottom: 0.5rem !important;
+            font-size: 1.1rem;
+        }
+        
+        /* Reduce card padding */
+        .card-body {
+            padding: 1.25rem;
+        }
+        
+        /* Reduce navigation buttons spacing */
+        .d-flex.justify-content-between.mt-4 {
+            margin-top: 0.75rem !important;
+            padding-top: 0.5rem !important;
+        }
+        
+        /* Progress bar color */
+        .progress-bar {
+            background-color: var(--bs-primary);
+        }
+        
+        /* Add heading styles */
+        .form-heading {
+            color: var(--bs-primary);
+            text-align: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--bs-primary);
+        }
+        
+        .form-heading i {
+            margin-right: 0.5rem;
+            color: var(--bs-primary);
+        }
+        
+        /* Make form heading smaller */
+        .form-heading h4 {
+            font-size: 1.25rem;
+        }
+        
+        /* Add modal styles */
+        .modal-content {
+            border: none;
+            border-radius: 0.5rem;
+        }
+        
+        .modal-header {
+            border-bottom: 2px solid var(--bs-primary);
+            padding: 1rem;
+        }
+        
+        .modal-title {
+            color: var(--bs-primary);
+            font-size: 1.2rem;
+        }
+        
+        .registration-summary {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .registration-summary h6 {
+            color: var(--bs-primary);
+        }
+        
+        .modal-footer {
+            border-top: 1px solid #dee2e6;
+            padding: 1rem;
+        }
+        
+        .alert {
+            margin-bottom: 0;
+            padding: 0.5rem;
+        }
+        
+        /* Add these styles for the table */
+        .table {
+            margin-bottom: 0;
+        }
+        
+        .table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: var(--bs-primary);
+        }
+        
+        .table td {
+            vertical-align: middle;
+        }
+        
+        .badge {
+            padding: 0.5em 0.8em;
+            font-weight: 500;
+        }
+        
+        .btn-sm {
+            padding: 0.25rem 0.5rem;
+        }
+        
+        /* Make table container full width */
+        .card-body {
+            padding: 0;
+        }
+        
+        .table-responsive {
+            margin: 0;
+        }
+        
+        /* Add hover effect to table rows */
+        .table-hover tbody tr:hover {
+            background-color: rgba(2, 48, 26, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Update Sidebar with Bootstrap fixed classes -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar collapse position-fixed">
+                <div class="position-sticky pt-3 d-flex flex-column min-vh-100">
+                    <!-- Add MRA Logo -->
+                    <div class="text-center mb-3" style="border-bottom: 2px solid white;">
+                        <img src="https://www.mra.mw/assets/fe/images/logo.png" alt="Malawi Revenue Authority" style="max-width: 80%; height: auto; filter: brightness(0) invert(1);">
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin-dashboard.html">
+                                <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin-staff-management.html">
+                                <i class="fas fa-users me-2"></i>Staff Management
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="admin-register-agent.html">
+                                <i class="fas fa-user-plus me-2"></i>Register Agent
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin-register-keeper.html">
+                                <i class="fas fa-user-shield me-2"></i>Register Keeper
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin-reports.html">
+                                <i class="fas fa-chart-bar me-2"></i>Analytics Reports
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin-update-system.html">
+                                <i class="fas fa-cogs me-2"></i>Update System
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <!-- Add Footer -->
+                    <div class="mt-auto text-center text-white p-3" style="border-top: 1px solid rgba(255,255,255,0.2);">
+                        <small>&copy; 2024 MRA</small><br>
+                        <small>Clearance System v1.0</small>
+                    </div>
+                </div>
+            </nav>
+
+    <form id="register-agent-form" method="post" action="register-agent.php" style="max-width: 400px; margin: 2rem auto; padding: 2rem; border: 1px solid #ddd; border-radius: 8px; background: #fafbfc;">
+        <h2 style="text-align:center; margin-bottom: 1.5rem;">Register New Agent</h2>
+        <div style="margin-bottom: 1rem;">
+            <label for="username" style="display:block; margin-bottom:0.5rem;">Username:</label>
+            <input type="text" id="username" name="username" required style="width:100%; padding:0.5rem; border:1px solid #ccc; border-radius:4px;">
+        </div>
+        <div style="margin-bottom: 1rem;">
+            <label for="email" style="display:block; margin-bottom:0.5rem;">Email:</label>
+            <input type="email" id="email" name="email" required style="width:100%; padding:0.5rem; border:1px solid #ccc; border-radius:4px;">
+        </div>
+        <div style="margin-bottom: 1rem;">
+            <label for="password" style="display:block; margin-bottom:0.5rem;">Password:</label>
+            <input type="password" id="password" name="password" required style="width:100%; padding:0.5rem; border:1px solid #ccc; border-radius:4px;">
+        </div>
+        <div style="margin-bottom: 1rem;">
+            <label for="licensed_number" style="display:block; margin-bottom:0.5rem;">Licensed Number:</label>
+            <input type="text" id="licensed_number" name="licensed_number" required style="width:100%; padding:0.5rem; border:1px solid #ccc; border-radius:4px;">
+        </div>
+        <div style="margin-bottom: 1.5rem;">
+            <label for="tpin" style="display:block; margin-bottom:0.5rem;">TPIN:</label>
+            <input type="text" id="tpin" name="tpin" required maxlength="6" style="width:100%; padding:0.5rem; border:1px solid #ccc; border-radius:4px;">
+        </div>
+        <button type="submit" style="width:100%; padding:0.7rem; background:#007bff; color:#fff; border:none; border-radius:4px; font-size:1rem;">Register Agent</button>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let currentStep = 1;
+            const totalSteps = 3;
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+            const progressBar = document.querySelector('.progress-bar');
+            const stepIndicators = document.querySelectorAll('.step');
+
+            function updateStep(step) {
+                // Hide all steps
+                document.querySelectorAll('.step-content').forEach(s => {
+                    s.classList.remove('active');
+                    s.classList.add('d-none');
+                });
+                
+                // Show current step with animation
+                const currentStepElement = document.getElementById(`step${step}`);
+                currentStepElement.classList.remove('d-none');
+                currentStepElement.classList.add('active');
+                
+                // Update progress bar
+                const progress = ((step - 1) / (totalSteps - 1)) * 100;
+                progressBar.style.width = `${progress}%`;
+                
+                // Update step indicators
+                stepIndicators.forEach((indicator, index) => {
+                    if (index + 1 <= step) {
+                        indicator.classList.add('completed');
+                    } else {
+                        indicator.classList.remove('completed');
+                    }
+                    if (index + 1 === step) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+
+                // Update buttons
+                prevBtn.style.display = step === 1 ? 'none' : 'block';
+                nextBtn.style.display = step === totalSteps ? 'none' : 'block';
+                submitBtn.style.display = step === totalSteps ? 'block' : 'none';
+            }
+
+            nextBtn.addEventListener('click', () => {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    updateStep(currentStep);
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                if (currentStep > 1) {
+                    currentStep--;
+                    updateStep(currentStep);
+                }
+            });
+
+            // Get the form and modal elements
+            const form = document.querySelector('form');
+            const modal = new bootstrap.Modal(document.getElementById('confirmRegistrationModal'));
+            
+            // Handle form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Populate summary in modal
+                document.getElementById('summaryName').textContent = 
+                    `${document.getElementById('firstName').value} ${document.getElementById('lastName').value}`;
+                document.getElementById('summaryEmail').textContent = 
+                    document.getElementById('email').value;
+                document.getElementById('summaryPhone').textContent = 
+                    document.getElementById('phone').value;
+                document.getElementById('summaryNationalId').textContent = 
+                    document.getElementById('nationalId').value;
+                
+                // Show modal
+                modal.show();
+            });
+            
+            // Handle confirmation
+            document.getElementById('confirmRegistrationBtn').addEventListener('click', function() {
+                // Here you would typically submit the form data to your backend
+                
+                // Show success message
+                modal.hide();
+                
+                // You can add a success toast/alert here
+                alert('Agent registered successfully!');
+                
+                // Optionally redirect to another page
+                // window.location.href = 'admin-dashboard.html';
+            });
+        });
+    </script>
+</body>
+</html>
