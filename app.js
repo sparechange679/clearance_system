@@ -3,13 +3,15 @@ import { PORT } from "./config/env.js";
 import userRouter from "./routes/user.routes.js";
 import {adminAgentRouter, adminKeeperRouter, adminRouter} from "./routes/admin.routes.js";
 import contactsRouter from "./routes/contact.routes.js";
-import connectToDatabase from "./database/mysql.js";
+import connectToDatabase, {sequelize} from "./database/mysql.js";
 import errorMiddleware from "./middlewares/error.middle.js";
 import cookieParser from "cookie-parser";
 import pageRouter from "./routes/page.routes.js";
 import clientRouter from "./routes/client.routes.js";
 import agentRouter from "./routes/agent.routes.js";
 import keeperRouter from "./routes/keeper.routes.js";
+// Import all models to register them with Sequelize
+import "./models/index.models.js"; // Import all models to register them
 
 const app = express();
 
@@ -34,9 +36,27 @@ app.use(errorMiddleware);
 // Default route to load an HTML file
 app.use(pageRouter);
 
+// app.listen(PORT, async () => {
+//   await connectToDatabase();
+//   console.log(
+//       await sequelize.sync({ alter: true }),
+//     `MRA Clearance API is running on http://localhost:${PORT}`
+//   );
+// });
+
 app.listen(PORT, async () => {
-  await connectToDatabase();
-  console.log(
-    `MRA Clearance API is running on http://localhost:${PORT}`
-  );
+  try {
+    await connectToDatabase();
+    await sequelize.authenticate();
+    console.log("Database connected successfully.");
+
+    // Sync all models
+    await sequelize.sync({ alter: true }); // or { force: true } for dev
+
+    app.listen(PORT, () => {
+      console.log(`Server running on http://localhost:${PORT}`);
+    });
+  } catch (error) {
+    console.error("Unable to start server:", error);
+  }
 });

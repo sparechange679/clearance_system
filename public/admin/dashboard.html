@@ -7,7 +7,7 @@
             content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Dashboard - Agent</title>
+    <title>Dashboard - Admin</title>
 
     <meta name="description" content="" />
 
@@ -50,7 +50,7 @@
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
             <div class="app-brand demo">
-                <a href="index.html" class="app-brand-link">
+                <a href="../index.html" class="app-brand-link">
                     <span class="app-brand-text menu-text fw-bolder ms-2">MRA Clearance System</span>
                 </a>
 
@@ -64,7 +64,7 @@
             <ul class="menu-inner py-1">
                 <!-- Dashboard -->
                 <li class="menu-item active">
-                    <a href="index.html" class="menu-link">
+                    <a href="../index.html" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-home-circle"></i>
                         <div data-i18n="Analytics">Dashboard</div>
                     </a>
@@ -454,11 +454,11 @@
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="#">
-                        <span class="d-flex align-items-center align-middle">
-                          <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                          <span class="flex-grow-1 align-middle">Billing</span>
-                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                        </span>
+                                        <span class="d-flex align-items-center align-middle">
+                                          <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
+                                          <span class="flex-grow-1 align-middle">Billing</span>
+                                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
+                                        </span>
                                     </a>
                                 </li>
                                 <li>
@@ -646,13 +646,13 @@
                         <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
                             <div class="row">
                                 <div class="col-6 mb-4">
-                        <div class="col-lg-8 mb-4 order-0">
-                            <div class="card">
-                                <div class="d-flex align-items-end row">
+                                    <div class="col-lg-8 mb-4 order-0">
+                                        <div class="card">
+                                            <div class="d-flex align-items-end row">
 
-                                </div>
-                            </div>
-                        </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="card-title d-flex align-items-start justify-content-between">
@@ -713,7 +713,7 @@
                                     </div>
                                 </div>
                                 <!-- </div>
-                <div class="row"> -->
+                                <div class="row"> -->
                                 <div class="col-12 mb-4">
                                     <div class="card">
                                         <div class="card-body">
@@ -776,9 +776,9 @@
                                     <ul class="p-0 m-0">
                                         <li class="d-flex mb-4 pb-1">
                                             <div class="avatar flex-shrink-0 me-3">
-                            <span class="avatar-initial rounded bg-label-primary"
-                            ><i class="bx bx-mobile-alt"></i
-                            ></span>
+                                                <span class="avatar-initial rounded bg-label-primary"
+                                                ><i class="bx bx-mobile-alt"></i
+                                                ></span>
                                             </div>
                                             <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                                 <div class="me-2">
@@ -820,9 +820,9 @@
                                         </li>
                                         <li class="d-flex">
                                             <div class="avatar flex-shrink-0 me-3">
-                            <span class="avatar-initial rounded bg-label-secondary"
-                            ><i class="bx bx-football"></i
-                            ></span>
+                                                <span class="avatar-initial rounded bg-label-secondary"
+                                                ><i class="bx bx-football"></i
+                                                ></span>
                                             </div>
                                             <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                                 <div class="me-2">
@@ -1034,25 +1034,7 @@
                                 document.write(new Date().getFullYear());
                             </script>
                             , made with ❤️ by
-                            <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
-                        </div>
-                        <div>
-                            <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-                            <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
-
-                            <a
-                                    href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                                    target="_blank"
-                                    class="footer-link me-4"
-                            >Documentation</a
-                            >
-
-                            <a
-                                    href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                                    target="_blank"
-                                    class="footer-link me-4"
-                            >Support</a
-                            >
+                            <a href="#" class="footer-link fw-bolder">Steven Maulana</a>
                         </div>
                     </div>
                 </footer>
@@ -1093,7 +1075,7 @@
     $(document).ready(function() {
         const token = sessionStorage.getItem('accessToken');
         if (!token) {
-            window.location.href = '/agent-login';
+            window.location.href = '/admin-login';
         }
     });
 
@@ -1101,19 +1083,19 @@
         e.preventDefault();
         const token = sessionStorage.getItem('accessToken');
         $.ajax({
-            url: 'http://localhost:8000/clearance/agent/sign-out',
+            url: 'http://localhost:8000/clearance/admin/sign-out',
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + token
             },
             success: function() {
                 sessionStorage.removeItem('accessToken');
-                window.location.href = '/agent-login';
+                window.location.href = '/admin-login';
             },
             error: function() {
                 // Even if logout fails, clear token and redirect
                 sessionStorage.removeItem('accessToken');
-                window.location.href = '/agent-login';
+                window.location.href = '/admin-login';
             }
         });
     });

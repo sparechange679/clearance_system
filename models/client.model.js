@@ -56,7 +56,7 @@ const init = async () => {
     await sequelize.sync({ alter: true }); // This updates the table without dropping it
     console.log("Client table created or updated successfully!");
   } catch (error) {
-    console.error("Unable to create or update the table clients:", error);
+    console.error("Unable to create or update the table client:", error);
   }
 };
 
