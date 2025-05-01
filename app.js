@@ -36,14 +36,6 @@ app.use(errorMiddleware);
 // Default route to load an HTML file
 app.use(pageRouter);
 
-// app.listen(PORT, async () => {
-//   await connectToDatabase();
-//   console.log(
-//       await sequelize.sync({ alter: true }),
-//     `MRA Clearance API is running on http://localhost:${PORT}`
-//   );
-// });
-
 app.listen(PORT, async () => {
   try {
     await connectToDatabase();
@@ -53,9 +45,7 @@ app.listen(PORT, async () => {
     // Sync all models
     await sequelize.sync({ alter: true }); // or { force: true } for dev
 
-    app.listen(PORT, () => {
-      console.log(`Server running on http://localhost:${PORT}`);
-    });
+    console.log(`Server running on http://localhost:${PORT}`);
   } catch (error) {
     console.error("Unable to start server:", error);
   }
