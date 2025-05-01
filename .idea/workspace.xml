@@ -5,27 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="166b00e9-d300-40cc-86b0-aeb42deb32c4" name="Changes" comment="Add client, agent, and keeper authentication features&#10;&#10;This commit introduces models, routes, and controllers for client, agent, and keeper authentication, including sign-up, sign-in, and sign-out functionalities. It also removes unused `.idea` project files and static `index.html`, replacing them with dynamically served pages via Express.">
-      <change afterPath="$PROJECT_DIR$/.env.development.local" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.env.production.local" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/agent-auth/agent.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/client-auth/client.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/keeper-auth/keeper.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/mysql.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/agent.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/client.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/keeper.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/admin-login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/admin-register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/agent.routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/client.routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/keeper.routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/page.routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/clearance_system.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin-register.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,27 +51,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "main",
-    "javascript.nodejs.core.library.configured.version": "22.14.0",
-    "javascript.nodejs.core.library.typings.version": "22.14.1",
-    "last_opened_file_path": "/home/blessings/Documents/sites/clearance_system/public",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/snap/webstorm/459/plugins/javascript-plugin/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.14.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.14.1&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/blessings/Documents/sites/carrental-js&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/snap/webstorm/459/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public" />
@@ -126,7 +107,9 @@
       <workItem from="1746011739546" duration="2794000" />
       <workItem from="1746017834337" duration="18649000" />
       <workItem from="1746042396141" duration="1576000" />
-      <workItem from="1746044035229" duration="7264000" />
+      <workItem from="1746044035229" duration="9529000" />
+      <workItem from="1746085087090" duration="98000" />
+      <workItem from="1746098394430" duration="336000" />
     </task>
     <task id="LOCAL-00001" summary="refactor autoloading and reorganize core files  - Implemented a spl_autoload_register function for dynamic class loading - Renamed and relocated Database.php, Response.php, and Validator.php to improve structure - Updated index.php to utilize the new autoloading mechanism">
       <option name="closed" value="true" />

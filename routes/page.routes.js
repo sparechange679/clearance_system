@@ -20,6 +20,22 @@ pageRouter.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "admin-register.html"));
   });
 
+  pageRouter.get("/admin-dashboard", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "admin-dashboard.html"));
+  });
+
+  pageRouter.get("/client-dashboard", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "client-dashboard.html"));
+  });
+
+  pageRouter.get("/agent-dashboard", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "agent-dashboard.html"));
+  });
+
+  pageRouter.get("/keeper-dashboard", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "keeper-dashboard.html"));
+  });
+
   pageRouter.get("/client-register", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "client-register.html"));
   });

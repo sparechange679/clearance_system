@@ -48,6 +48,13 @@ const Agent = sequelize.define(
         len: [6],
       },
     },
+      document: {
+          type: DataTypes.STRING,
+          allowNull: false,
+          validate: {
+              notEmpty: true,
+          },
+      },
   },
   {
     timestamps: true,

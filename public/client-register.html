@@ -7,7 +7,7 @@
             content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Admin Register</title>
+    <title>Client Register</title>
 
     <meta name="description" content="" />
 
@@ -120,7 +120,7 @@
 
                     <p class="text-center">
                         <span>Already have an account?</span>
-                        <a href="/admin-login">
+                        <a href="/client-login">
                             <span>Sign in instead</span>
                         </a>
                     </p>
@@ -146,70 +146,44 @@
         $('#formAuthentication').submit(function(e) {
             e.preventDefault();
 
-            swal({
-                title: "Enter your Admin ID",
-                text: "ID must start with '000' and be 8 digits long.",
-                content: {
-                    element: "input",
-                    attributes: {
-                        placeholder: "e.g., 00012345",
-                        type: "text",
-                    },
+            var data = {
+                firstname: $('#firstname').val(),
+                lastname: $('#lastname').val(),
+                email: $('#email').val(),
+                password: $('#password').val()
+            };
+
+            if (!data.firstname || !data.lastname || !data.email || !data.password) {
+                swal("Error", "Please fill in all fields.", "error");
+                return;
+            }
+
+            $.ajax({
+                url: 'http://localhost:8000/clearance/client/sign-up',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function(response) {
+                    if (response.success && response.data && response.data.token) {
+                        // Save token to sessionStorage
+                        sessionStorage.setItem('accessToken', response.data.token); // [2][4][5]
+                        swal("Success", response.message, "success")
+                            .then(function() {
+                                // Redirect to dashboard
+                                window.location = "/client-dashboard"; // [3]
+                            });
+                    } else {
+                        swal("Error", response.message || "Registration failed.", "error");
+                    }
                 },
-                buttons: true,
-                closeOnClickOutside: false,
-                closeOnEsc: false
-            })
-                .then(function(adminId) {
-                    if (!adminId) {
-                        swal("Error", "Admin ID is required!", "error");
-                        return;
+                error: function(xhr) {
+                    var message = "Registration failed.";
+                    if (xhr.responseJSON && xhr.responseJSON.message) {
+                        message = xhr.responseJSON.message;
                     }
-                    if (!/^000\d{5}$/.test(adminId)) {
-                        swal("Error", "Admin ID must start with '000' and be 8 digits long.", "error");
-                        return;
-                    }
-
-                    var data = {
-                        firstname: $('#firstname').val(),
-                        lastname: $('#lastname').val(),
-                        email: $('#email').val(),
-                        password: $('#password').val(),
-                        adminId: adminId
-                    };
-
-                    if (!data.firstname || !data.lastname || !data.email || !data.password) {
-                        swal("Error", "Please fill in all fields.", "error");
-                        return;
-                    }
-
-                    $.ajax({
-                        url: 'http://localhost:8000/clearance/admin/sign-up',
-                        method: 'POST',
-                        contentType: 'application/json',
-                        data: JSON.stringify(data),
-                        success: function(response) {
-                            if (response.success && response.data && response.data.token) {
-                                // Save token to sessionStorage
-                                sessionStorage.setItem('accessToken', response.data.token); // [2][4][5]
-                                swal("Success", response.message, "success")
-                                    .then(function() {
-                                        // Redirect to dashboard
-                                        window.location = "/admin-dashboard"; // [3]
-                                    });
-                            } else {
-                                swal("Error", response.message || "Registration failed.", "error");
-                            }
-                        },
-                        error: function(xhr) {
-                            var message = "Registration failed.";
-                            if (xhr.responseJSON && xhr.responseJSON.message) {
-                                message = xhr.responseJSON.message;
-                            }
-                            swal("Error", message, "error");
-                        }
-                    });
-                });
+                    swal("Error", message, "error");
+                }
+            });
         });
     });
 </script>

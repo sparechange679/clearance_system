@@ -1,7 +1,7 @@
 import express from "express";
 import { PORT } from "./config/env.js";
 import userRouter from "./routes/user.routes.js";
-import adminRouter from "./routes/admin.routes.js";
+import {adminAgentRouter, adminKeeperRouter, adminRouter} from "./routes/admin.routes.js";
 import contactsRouter from "./routes/contact.routes.js";
 import connectToDatabase from "./database/mysql.js";
 import errorMiddleware from "./middlewares/error.middle.js";
@@ -22,6 +22,8 @@ app.use(cookieParser());
 app.use("/clearance/users", userRouter);
 app.use("/clearance/contacts", contactsRouter);
 app.use("/clearance/admin", adminRouter);
+app.use("/clearance/admin/agent", adminAgentRouter);
+app.use("/clearance/admin/keeper", adminKeeperRouter);
 app.use("/clearance/client", clientRouter);
 app.use("/clearance/agent", agentRouter);
 app.use("/clearance/keeper", keeperRouter);

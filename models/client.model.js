@@ -25,14 +25,6 @@ const Client = sequelize.define(
         len: [2, 50],
       },
     },
-      tpin: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-          len: [6],
-        },
-      },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -48,13 +40,6 @@ const Client = sequelize.define(
         len: [6],
       },
     },
-      document: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          notEmpty: true,
-        },
-      },
     tokenVersion: {
       type: DataTypes.INTEGER,
       defaultValue: 0,

@@ -14,7 +14,7 @@
             content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Login admin</title>
+    <title>Login Client</title>
 
     <meta name="description" content="" />
 
@@ -67,7 +67,7 @@
                         </a>
                     </div>
                     <!-- /Logo -->
-                    <h4 class="mb-2">Welcome admin please login</h4>
+                    <h4 class="mb-2">Welcome client please login</h4>
                     <p class="mb-4">Please sign-in to your account and start working</p>
 
                     <form id="formAuthentication" class="mb-3" method="POST">
@@ -114,7 +114,7 @@
 
                     <p class="text-center">
                         <span>New on our platform?</span>
-                        <a href="/admin-register">
+                        <a href="/client-register">
                             <span>Create an account</span>
                         </a>
                     </p>
@@ -165,7 +165,7 @@
             };
 
             $.ajax({
-                url: 'http://localhost:8000/clearance/admin/sign-in',
+                url: 'http://localhost:8000/clearance/client/sign-in',
                 method: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(data),
@@ -182,7 +182,7 @@
                         swal("Success", response.message, "success")
                             .then(() => {
                                 // Redirect to dashboard
-                                window.location.href = '/admin-dashboard';
+                                window.location.href = '/client-dashboard';
                             });
                     } else {
                         swal("Error", response.message || "Login failed.", "error");
