@@ -11,7 +11,7 @@ import clientRouter from "./routes/client.routes.js";
 import agentRouter from "./routes/agent.routes.js";
 import keeperRouter from "./routes/keeper.routes.js";
 // Import all models to register them with Sequelize
-import "./models/index.models.js"; // Import all models to register them
+import "./models/index.models.js";
 
 const app = express();
 

@@ -151,7 +151,7 @@
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="/admin-dashboard/account">
+                                    <a class="dropdown-item" href="/client-dashboard/account">
                                         <i class="bx bx-user me-2"></i>
                                         <span class="align-middle">My Profile</span>
                                     </a>
@@ -194,151 +194,82 @@
                 <!-- Content -->
 
                 <div class="container-xxl flex-grow-1 container-p-y">
-                    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Vertical Layouts</h4>
+                    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Shipment/</span> Add</h4>
 
-                    <!-- Basic Layout -->
                     <div class="row">
                         <div class="col-xl">
                             <div class="card mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center">
-                                    <h5 class="mb-0">Basic Layout</h5>
-                                    <small class="text-muted float-end">Default label</small>
+                                    <h5 class="mb-0">New Shipment Declaration</h5>
                                 </div>
                                 <div class="card-body">
-                                    <form>
+                                    <form id="shipmentForm" enctype="multipart/form-data">
                                         <div class="mb-3">
-                                            <label class="form-label" for="basic-default-fullname">Full Name</label>
-                                            <input type="text" class="form-control" id="basic-default-fullname" placeholder="John Doe" />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="basic-default-company">Company</label>
-                                            <input type="text" class="form-control" id="basic-default-company" placeholder="ACME Inc." />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="basic-default-email">Email</label>
-                                            <div class="input-group input-group-merge">
-                                                <input
-                                                        type="text"
-                                                        id="basic-default-email"
-                                                        class="form-control"
-                                                        placeholder="john.doe"
-                                                        aria-label="john.doe"
-                                                        aria-describedby="basic-default-email2"
-                                                />
-                                                <span class="input-group-text" id="basic-default-email2">@example.com</span>
-                                            </div>
-                                            <div class="form-text">You can use letters, numbers & periods</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="basic-default-phone">Phone No</label>
+                                            <label class="form-label" for="tpin">TPIN Number</label>
                                             <input
                                                     type="text"
-                                                    id="basic-default-phone"
-                                                    class="form-control phone-mask"
-                                                    placeholder="658 799 8941"
+                                                    class="form-control"
+                                                    id="tpin"
+                                                    name="tpin"
+                                                    placeholder="Enter 6-digit TPIN"
+                                                    maxlength="6"
+                                                    required
                                             />
                                         </div>
+
                                         <div class="mb-3">
-                                            <label class="form-label" for="basic-default-message">Message</label>
-                                            <textarea
-                                                    id="basic-default-message"
+                                            <label class="form-label" for="productName">Product Name</label>
+                                            <input
+                                                    type="text"
                                                     class="form-control"
-                                                    placeholder="Hi, Do you have a moment to talk Joe?"
-                                            ></textarea>
+                                                    id="productName"
+                                                    name="productName"
+                                                    placeholder="Enter product name"
+                                                    required
+                                            />
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Send</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl">
-                            <div class="card mb-4">
-                                <div class="card-header d-flex justify-content-between align-items-center">
-                                    <h5 class="mb-0">Basic with Icons</h5>
-                                    <small class="text-muted float-end">Merged input group</small>
-                                </div>
-                                <div class="card-body">
-                                    <form>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="basic-icon-default-fullname">Full Name</label>
-                                            <div class="input-group input-group-merge">
-                                                <span id="basic-icon-default-fullname2" class="input-group-text"
-                                                ><i class="bx bx-user"></i
-                                                ></span>
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <label class="form-label" for="quantity">Quantity</label>
                                                 <input
-                                                        type="text"
+                                                        type="number"
                                                         class="form-control"
-                                                        id="basic-icon-default-fullname"
-                                                        placeholder="John Doe"
-                                                        aria-label="John Doe"
-                                                        aria-describedby="basic-icon-default-fullname2"
+                                                        id="quantity"
+                                                        name="quantity"
+                                                        min="1"
+                                                        required
+                                                />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label" for="price">Unit Price (MWK)</label>
+                                                <input
+                                                        type="number"
+                                                        class="form-control"
+                                                        id="price"
+                                                        name="price"
+                                                        step="0.01"
+                                                        required
                                                 />
                                             </div>
                                         </div>
+
                                         <div class="mb-3">
-                                            <label class="form-label" for="basic-icon-default-company">Company</label>
-                                            <div class="input-group input-group-merge">
-                                                <span id="basic-icon-default-company2" class="input-group-text"
-                                                ><i class="bx bx-buildings"></i
-                                                ></span>
-                                                <input
-                                                        type="text"
-                                                        id="basic-icon-default-company"
-                                                        class="form-control"
-                                                        placeholder="ACME Inc."
-                                                        aria-label="ACME Inc."
-                                                        aria-describedby="basic-icon-default-company2"
-                                                />
-                                            </div>
+                                            <label class="form-label" for="document">Upload Proof (PDF only)</label>
+                                            <input
+                                                    type="file"
+                                                    class="form-control"
+                                                    id="document"
+                                                    name="document"
+                                                    accept="application/pdf"
+                                                    required
+                                            />
                                         </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="basic-icon-default-email">Email</label>
-                                            <div class="input-group input-group-merge">
-                                                <span class="input-group-text"><i class="bx bx-envelope"></i></span>
-                                                <input
-                                                        type="text"
-                                                        id="basic-icon-default-email"
-                                                        class="form-control"
-                                                        placeholder="john.doe"
-                                                        aria-label="john.doe"
-                                                        aria-describedby="basic-icon-default-email2"
-                                                />
-                                                <span id="basic-icon-default-email2" class="input-group-text">@example.com</span>
-                                            </div>
-                                            <div class="form-text">You can use letters, numbers & periods</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="basic-icon-default-phone">Phone No</label>
-                                            <div class="input-group input-group-merge">
-                                                <span id="basic-icon-default-phone2" class="input-group-text"
-                                                ><i class="bx bx-phone"></i
-                                                ></span>
-                                                <input
-                                                        type="text"
-                                                        id="basic-icon-default-phone"
-                                                        class="form-control phone-mask"
-                                                        placeholder="658 799 8941"
-                                                        aria-label="658 799 8941"
-                                                        aria-describedby="basic-icon-default-phone2"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="basic-icon-default-message">Message</label>
-                                            <div class="input-group input-group-merge">
-                                                <span id="basic-icon-default-message2" class="input-group-text"
-                                                ><i class="bx bx-comment"></i
-                                                ></span>
-                                                <textarea
-                                                        id="basic-icon-default-message"
-                                                        class="form-control"
-                                                        placeholder="Hi, Do you have a moment to talk Joe?"
-                                                        aria-label="Hi, Do you have a moment to talk Joe?"
-                                                        aria-describedby="basic-icon-default-message2"
-                                                ></textarea>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Send</button>
+
+                                        <div class="alert alert-danger d-none" id="errorAlert"></div>
+                                        <div class="alert alert-success d-none" id="successAlert"></div>
+
+                                        <button type="submit" class="btn btn-primary">Submit Shipment</button>
                                     </form>
                                 </div>
                             </div>
@@ -395,7 +326,7 @@
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <script>
     $(document).ready(function() {
-        const token = sessionStorage.getItem('accessToken');
+        const token = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
         if (!token) {
             window.location.href = '/client-login';
         }
@@ -422,5 +353,68 @@
         });
     });
 </script>
+
+<script>
+    // Add this script at the bottom of your HTML
+    document.getElementById('shipmentForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+        const alertError = document.getElementById('errorAlert');
+        const alertSuccess = document.getElementById('successAlert');
+        const token = sessionStorage.getItem('accessToken');
+
+        try {
+            // Check if token exists
+            if (!token) {
+                throw new Error('Authentication required. Please log in again.');
+            }
+
+            const response = await fetch('/clearance/client/shipment', {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                    // Don't add Content-Type header when using FormData
+                },
+                body: formData
+            });
+
+            // Handle non-JSON responses
+            const contentType = response.headers.get('content-type');
+            let data;
+            
+            if (contentType && contentType.includes('application/json')) {
+                data = await response.json();
+            } else {
+                data = { message: await response.text() };
+            }
+
+            if (!response.ok) {
+                throw new Error(data.message || 'Submission failed');
+            }
+
+            alertError.classList.add('d-none');
+            alertSuccess.classList.remove('d-none');
+            alertSuccess.textContent = data.message || 'Shipment added successfully';
+            e.target.reset();
+
+        } catch (error) {
+            console.error('Shipment submission error:', error);
+            alertSuccess.classList.add('d-none');
+            alertError.classList.remove('d-none');
+            alertError.textContent = error.message;
+            
+            // If error is due to authentication, redirect to login
+            if (error.message.includes('Authentication') || 
+                error.message.includes('token') || 
+                error.message.includes('authorized')) {
+                setTimeout(() => {
+                    window.location.href = '/client-login';
+                }, 2000); // Redirect after 2 seconds so user can see the error
+            }
+        }
+    });
+</script>
+
 </body>
 </html>

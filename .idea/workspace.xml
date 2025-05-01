@@ -5,8 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="166b00e9-d300-40cc-86b0-aeb42deb32c4" name="Changes" comment="Add client, agent, and keeper authentication features&#10;&#10;This commit introduces models, routes, and controllers for client, agent, and keeper authentication, including sign-up, sign-in, and sign-out functionalities. It also removes unused `.idea` project files and static `index.html`, replacing them with dynamically served pages via Express.">
+      <change afterPath="$PROJECT_DIR$/middlewares/upload.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/document.model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/seedTpinSamples.model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/shipment.model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/tpinSample.model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/client-auth/client.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/client-auth/client.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/auth.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/auth.middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/index.models.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/index.models.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/client/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/client/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/client/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/client/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/client.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/client.routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +124,7 @@
       <workItem from="1746044035229" duration="9529000" />
       <workItem from="1746085087090" duration="98000" />
       <workItem from="1746098394430" duration="336000" />
-      <workItem from="1746129615491" duration="652000" />
+      <workItem from="1746129615491" duration="9590000" />
     </task>
     <task id="LOCAL-00001" summary="refactor autoloading and reorganize core files  - Implemented a spl_autoload_register function for dynamic class loading - Renamed and relocated Database.php, Response.php, and Validator.php to improve structure - Updated index.php to utilize the new autoloading mechanism">
       <option name="closed" value="true" />
@@ -130,6 +144,6 @@
     <MESSAGE value="implement admin registration and login views, and authentication controllers&#10;&#10;- Add admin registration view (`admin_register.view.php`)&#10;- Add admin login view (`admin_login.view.php`)&#10;- Implement authentication controllers for admin and client logins&#10;- Update index view for improved navigation" />
     <MESSAGE value="refactor autoloading and reorganize core files  - Implemented a spl_autoload_register function for dynamic class loading - Renamed and relocated Database.php, Response.php, and Validator.php to improve structure - Updated index.php to utilize the new autoloading mechanism" />
     <MESSAGE value="Add client, agent, and keeper authentication features&#10;&#10;This commit introduces models, routes, and controllers for client, agent, and keeper authentication, including sign-up, sign-in, and sign-out functionalities. It also removes unused `.idea` project files and static `index.html`, replacing them with dynamically served pages via Express." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add client, agent, and keeper authentication features&#10;&#10;This commit introduces models, routes, and controllers for client, agent, and keeper authentication, including sign-up, sign-in, and sign-out functionalities. It also removes unused `.idea` project files and static `index.html`, replacing them with dynamically served pages via Express." />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>

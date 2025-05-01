@@ -45,6 +45,7 @@ export const signUp = async (req, res, next) => {
   }
 };
 
+// Fix for the client.controller.js signin function
 export const signIn = async (req, res, next) => {
   try {
     const { email, password } = req.body;
@@ -65,9 +66,15 @@ export const signIn = async (req, res, next) => {
       throw error;
     }
 
-    const token = jwt.sign({ clientId: client.id }, JWT_SECRET, {
-      expiresIn: JWT_EXPIRES_IN,
-    });
+    // Make sure we use clientId not userId in the token
+    const token = jwt.sign(
+      {
+        clientId: client.id,  // Ensure this is clientId, not userId
+        tokenVersion: client.tokenVersion,
+      },
+      JWT_SECRET,
+      { expiresIn: JWT_EXPIRES_IN }
+    );
 
     res.status(200).json({
       success: true,

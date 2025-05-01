@@ -739,11 +739,11 @@
                 <footer class="content-footer footer bg-footer-theme">
                     <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                         <div class="mb-2 mb-md-0">
-                            ©
+                            &copy;
                             <script>
                                 document.write(new Date().getFullYear());
                             </script>
-                            , made with ❤️ by
+                            , made with &hearts; by
                             <a href="#" class="footer-link fw-bolder">Steven Maulana</a>
                         </div>
                     </div>
@@ -783,7 +783,7 @@
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <script>
     $(document).ready(function() {
-        const token = sessionStorage.getItem('accessToken');
+        const token = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
         if (!token) {
             window.location.href = '/client-login';
         }
@@ -791,7 +791,7 @@
 
     $('#logoutBtn').click(function(e) {
         e.preventDefault();
-        const token = sessionStorage.getItem('accessToken');
+        const token = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
         $.ajax({
             url: 'http://localhost:8000/clearance/client/sign-out',
             method: 'POST',
@@ -800,11 +800,12 @@
             },
             success: function() {
                 sessionStorage.removeItem('accessToken');
+                localStorage.removeItem('accessToken');
                 window.location.href = '/client-login';
             },
             error: function() {
-                // Even if logout fails, clear token and redirect
                 sessionStorage.removeItem('accessToken');
+                localStorage.removeItem('accessToken');
                 window.location.href = '/client-login';
             }
         });
